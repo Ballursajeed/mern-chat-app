@@ -58,39 +58,35 @@ const handleChange = (e) => {
   }));
 };
       return(
-     <>
-      <form onSubmit={handleSubmit}>
-   <div className="mb-3 mt-5">
-    <label htmlFor="Name" className="htmlForm-label">Name</label>
-    <input
-    type="name"
-    name="name"
-    placeholder="name"
+<div className='bg-blue-50 h-screen flex items-center'>
+ <form onSubmit={handleSubmit} className='w-64 mx-auto mb-12'>
+   <input
+     type="name"
+     name="name"
+     placeholder="name"
      onChange={handleChange}
-     className="htmlForm-control" id="Name" aria-describedby="emailHelp" />
-  </div>
-  <div className="mb-3 ">
-    <label htmlFor="exampleInputEmail1" className="htmlForm-label">Email address</label>
+     className="block w-full rounded-sm p-2 mb-2 border" id="Name" aria-describedby="emailHelp" />
+
     <input
     type="email"
     name="email"
+     placeholder="email"
      onChange={handleChange}
-     className="htmlForm-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="htmlForm-label">Password</label>
+     className="block w-full rounded-sm p-2 mb-2 border" id="exampleInputEmail1" aria-describedby="emailHelp" />
+
     <input
      onChange={handleChange}
     type="password"
      name="password"
-    className="htmlForm-control" id="exampleInputPassword1" />
-  </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form>
-<button
+     placeholder='password'
+    className="block w-full rounded-sm p-2 mb-2 border" id="exampleInputPassword1" />
+  <button type="submit" className="bg-blue-500 text-white block w-full rounded-sm p-2">Submit</button>
+  <button
         onClick={() => navigate("/chats")}
        >Already have an Account? Then login</button>
-     </>
+</form>
+
+</div>
 
       )
 }
