@@ -1,0 +1,34 @@
+import jwt from 'jsonwebtoken';
+
+// Dummy function to decode the JWT token
+const decodeToken = (token) => {
+  try {
+    // Replace 'yourSecretKey' with the actual secret key used for signing the token on the server
+      const decoded = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
+
+
+    // The decoded object may contain user information
+    return decoded;
+  } catch (error) {
+    // If there's an error (e.g., token is expired or invalid), you can handle it here
+    console.error('Error decoding token:', error);
+    return null;
+  }
+};
+
+export const isAuthenticated = () => {
+  // Replace this with your actual authentication logic
+  const token = localStorage.getItem('jwtToken'); // Assuming you store the token in localStorage
+
+  if (token) {
+    // Decode the token or perform any necessary validation
+    // You might also want to check if the token is expired
+    const user = decodeToken(token);
+
+    if (user) {
+      return user;
+    }
+  }
+
+  return null;
+};
