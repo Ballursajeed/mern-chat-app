@@ -33,9 +33,22 @@ export default function Chat({ user }) {
   }, []);
 
   return (
-    <div className="App">
-      <Events events={ fooEvents } />
-      <MyForm user={user} />
+ <>
+  <div className='flex h-screen'>
+   <div className='bg-white w-1/3'>
+      contact
+   </div>
+   <div className='flex flex-col bg-blue-200 w-2/3 p-2'>
+    <div className='flex-grow'>Messages</div>
+    <div>
+     <Events events={ fooEvents } />
+     <MyForm user={user} />
     </div>
+   </div>
+  </div>
+    <div >
+
+    </div>
+</>
   );
 }

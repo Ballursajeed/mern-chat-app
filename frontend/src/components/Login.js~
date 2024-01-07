@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext.js"
+
 
 const Login = ({ setUser }) => {
 
@@ -13,6 +15,7 @@ const [ inputs, setInputs ] = React.useState({
    email:"",
    password:""
  })
+
 
  const handleSubmit = async(e) => {
 
@@ -55,30 +58,29 @@ const handleChange = (e) => {
   }));
 };
       return(
-     <>
-      <form onSubmit={handleSubmit}>
-  <div className="mb-3 mt-5">
-    <label htmlFor="exampleInputEmail1" className="htmlForm-label">Email address</label>
+<div className='bg-blue-50 h-screen flex items-center'>
+  <form onSubmit={handleSubmit} className='w-64 mx-auto mb-12'>
     <input
     type="email"
     name="email"
+      placeholder="name"
      onChange={handleChange}
-     className="htmlForm-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="htmlForm-label">Password</label>
-    <input
+       className="block w-full rounded-sm p-2 mb-2 border"
+        id="exampleInputEmail1" aria-describedby="emailHelp" />
+
+     <input
      onChange={handleChange}
     type="password"
      name="password"
-    className="htmlForm-control" id="exampleInputPassword1" />
-  </div>
-  <button type="submit"  className="btn btn-primary">Submit</button>
-</form>
-<button
+     placeholder='password'
+    className="block w-full rounded-sm p-2 mb-2 border" id="exampleInputPassword1" />
+  <button type="submit"  className="bg-blue-500 text-white block w-full rounded-sm p-2">Submit</button>
+  <button
         onClick={() => navigate("/register")}
        >Not registered? please Registered</button>
-     </>
+</form>
+
+     </div>
 
       )
 }

@@ -3,7 +3,7 @@ import { socket } from '../socket.js';
 import { Events } from "./Event.js";
 import { MyForm } from './MyForm.js';
 
-export default function Chat() {
+export default function Chat({ user }) {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState([]);
 
@@ -33,9 +33,22 @@ export default function Chat() {
   }, []);
 
   return (
-    <div className="App">
-      <Events events={ fooEvents } />
-      <MyForm />
+ <>
+  <div className='flex h-screen'>
+   <div className='bg-white w-1/3'>
+      contact
+   </div>
+   <div className='flex flex-col bg-blue-150 w-2/3 p-2'>
+    <div className='flex-grow'>Messages</div>
+    <div>
+     <Events events={ fooEvents } />
+     <MyForm user={user} />
     </div>
+   </div>
+  </div>
+    <div >
+
+    </div>
+</>
   );
 }

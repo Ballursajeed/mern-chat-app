@@ -10,8 +10,9 @@ import cookieParser from 'cookie-parser'
 dotenv.config();
 
 const app = express();
-const httpServer = createServer(app);
 app.use(cookieParser());
+const httpServer = createServer(app);
+
 const io = new Server(httpServer, {
   cors: {
     origin: "http://localhost:3000", // Replace with your React app's URL
@@ -31,6 +32,8 @@ connectDB();
 
  //routes
 app.use("/api/user",userRouter);
+
+
 
 //error handling middleware
 app.use((err, req, res, next) => {

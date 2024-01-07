@@ -48,7 +48,12 @@ const registerUserController = async(req,res) => {
 
   //sending success respond
   res
-  .status(200)
+  .cookie('token',token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    })
+  .status(201)
   .send({
          success: true,
          message:"User registered successfully!",
@@ -118,10 +123,8 @@ const isMatch = await bcrypt.compare(password,user.password);
 
 res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set to true in production if using HTTPS
-      sameSite: 'strict', // Adjust according to your requirements
-      maxAge: 3600000, // 1 hour expiration, in milliseconds
-      path: '/', // Adjust according to your application's routes
+      secure: true,
+      sameSite: 'none',
     });
     return res.status(200)
  .send({

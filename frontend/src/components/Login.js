@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext.js"
+
 
 const Login = ({ setUser }) => {
 
@@ -13,6 +15,8 @@ const [ inputs, setInputs ] = React.useState({
    email:"",
    password:""
  })
+
+ const {setUsername, setId} = React.useContext(UserContext);
 
  const handleSubmit = async(e) => {
 
@@ -34,6 +38,9 @@ const [ inputs, setInputs ] = React.useState({
       toast.error(`Error: ${errorMessage}`);
       alert(`Error: ${errorMessage}`);
   }
+
+ setUsername(inputs.name);
+ setId(data.user._id);
 
    if (data.success) {
    	setUser(data.user.name)
